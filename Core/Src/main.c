@@ -95,7 +95,6 @@ int main(void)
   uint16_t LED_Period = 0;
   uint32_t TimeStamp = 0;
   uint32_t ButtonTimeStamp = 0;
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -130,24 +129,22 @@ int main(void)
 					  LED1_HalfPeriod = 1000;
 				  }
 			  }
-
 // S2
 			  SwitchStateS2[0] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3);
 			  if(SwitchStateS2[1] == GPIO_PIN_SET && SwitchStateS2[0] == GPIO_PIN_RESET)
 			  {
-				if(LED_Period == 0)
-				{
-					LED_Period = 1;
-				}
-				else
-				{
-					LED_Period = 0;
-				}
+				  if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7) == GPIO_PIN_SET)
+				  {
+					  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
+				  }
+				  else
+				  {
+					  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
+				  }
 			  }
 			  SwitchStateS1[1] = SwitchStateS1[0];
 			  SwitchStateS2[1] = SwitchStateS2[0];
 			  }
-
 			  // Run LED
 			  if(HAL_GetTick() - TimeStamp >= LED1_HalfPeriod)
 			  {
