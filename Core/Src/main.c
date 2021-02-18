@@ -92,7 +92,7 @@ int main(void)
   GPIO_PinState SwitchStateS1[2];
   GPIO_PinState SwitchStateS2[2];
   GPIO_PinState SwitchStateS3[2];
-  uint16_t LED1_Period = 250; //0.5HZ
+  uint16_t LED1_Period = 166; //0.5HZ
   uint32_t TimeStamp = 0;
   uint32_t ButtonTimeStamp = 0;
   uint32_t TimeOn = 500;
@@ -115,21 +115,21 @@ int main(void)
 			  if(SwitchStateS1[1] == GPIO_PIN_SET && SwitchStateS1[0] == GPIO_PIN_RESET)
 			  {
 				  //Change Half Period of LED 1
-				  if(LED1_Period == 1500) // 2Hz
+				  if(LED1_Period == 166) // 2Hz
 				  {
-					  LED1_Period = 1000;
+					  LED1_Period = 250;
 				  }
-				  else if(LED1_Period == 1000) //1Hz
+				  else if(LED1_Period == 250) //1Hz
 				  {
 					  LED1_Period = 500;
 				  }
 				  else if(LED1_Period == 500) //0.5Hz
 				  {
-					  LED1_Period = 250;
+					  LED1_Period = 1000;
 				  }
 				  else
 				  {
-					  LED1_Period = 1500; //3Hz
+					  LED1_Period = 166; //3Hz
 				  }
 			  }
 			  SwitchStateS1[1] = SwitchStateS1[0];
@@ -181,6 +181,8 @@ int main(void)
 				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
 			}
 		  }
+
+//S3 LED
 
 		  if(HAL_GetTick() - TimeStamp3 >= TimeOn && HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6) == GPIO_PIN_SET)
 		  {
