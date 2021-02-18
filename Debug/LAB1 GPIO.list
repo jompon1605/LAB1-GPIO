@@ -390,7 +390,7 @@ int main(void)
   GPIO_PinState SwitchStateS1[2];
   GPIO_PinState SwitchStateS2[2];
   GPIO_PinState SwitchStateS3[2];
-  uint16_t LED1_Period = 166; //0.5HZ
+  uint16_t LED1_Period = 166; //3HZ
  80004ee:	23a6      	movs	r3, #166	; 0xa6
  80004f0:	84fb      	strh	r3, [r7, #38]	; 0x26
   uint32_t TimeStamp = 0;

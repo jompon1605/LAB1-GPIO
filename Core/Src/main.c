@@ -92,7 +92,7 @@ int main(void)
   GPIO_PinState SwitchStateS1[2];
   GPIO_PinState SwitchStateS2[2];
   GPIO_PinState SwitchStateS3[2];
-  uint16_t LED1_Period = 166; //0.5HZ
+  uint16_t LED1_Period = 166; //3HZ
   uint32_t TimeStamp = 0;
   uint32_t ButtonTimeStamp = 0;
   uint32_t TimeOn = 500;
